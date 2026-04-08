@@ -29,37 +29,38 @@ export default function RESTAPI() {
             { label: 'REST API' }
           ]} />
           <article className="lesson-content">
-            <h1>Salesforce REST API</h1>
-            <p className="lesson-intro">Learn how to use the Salesforce REST API to integrate with external systems.</p>
+            <h1>Salesforce REST API: Complete Integration Guide</h1>
+            <p className="lesson-intro">
+              Learn how to use the Salesforce REST API to integrate with external systems. This guide covers
+              authentication, CRUD operations, SOQL queries, and the Composite API for building enterprise integrations.
+            </p>
 
             <section>
-              <h2>What is REST API?</h2>
-              <p>The Salesforce REST API provides a powerful, convenient way to interact with Salesforce data. It uses HTTP methods (GET, POST, PUT, DELETE) to perform CRUD operations.</p>
+              <h2>1. What is REST API?</h2>
+              <p>The Salesforce REST API provides a powerful, convenient way to interact with Salesforce data. 
+              It uses HTTP methods (GET, POST, PATCH, DELETE) to perform CRUD operations on Salesforce records.</p>
             </section>
 
             <section>
-              <h2>Base URL</h2>
-              <CodeBlock language="text" code={`Base URL: https://yourinstance.salesforce.com/services/data/v58.0/
+              <h2>2. Base URL Structure</h2>
+              <CodeBlock language="text" code={`Base URL: https://{instance}.salesforce.com/services/data/v{version}/
 
-Common endpoints:
-- /sobjects/ - List all objects
-- /sobjects/Account - Account sObject operations
-- /query/ - Run SOQL queries
-- /search/ - Run SOSL searches`} />
+Example: https://na1.salesforce.com/services/data/v58.0/
+Sandbox: https://test.salesforce.com/services/data/v58.0/`} />
             </section>
 
             <section>
-              <h2>Authentication</h2>
-              <p>Include Authorization header with access token:</p>
+              <h2>3. Authentication</h2>
+              <p>All REST API requests require OAuth 2.0 authentication. Include the access token in the Authorization header:</p>
               <CodeBlock language="text" code={`Authorization: Bearer YOUR_ACCESS_TOKEN`} />
             </section>
 
             <section>
-              <h2>Query Data (GET)</h2>
+              <h2>4. Query Data (GET)</h2>
               <CodeBlock language="apex" code={`// Using REST API to query
 Http http = new Http();
 HttpRequest request = new HttpRequest();
-request.setEndpoint('https://yourinstance.salesforce.com/services/data/v58.0/query/?q=SELECT+Id,Name+FROM+Account+LIMIT+5');
+request.setEndpoint('https://na1.salesforce.com/services/data/v58.0/query/?q=SELECT+Id,Name+FROM+Account+LIMIT+5');
 request.setMethod('GET');
 request.setHeader('Authorization', 'Bearer ' + token);
 
@@ -68,9 +69,9 @@ System.debug(response.getBody());`} />
             </section>
 
             <section>
-              <h2>Create Record (POST)</h2>
+              <h2>5. Create Record (POST)</h2>
               <CodeBlock language="apex" code={`HttpRequest request = new HttpRequest();
-request.setEndpoint('https://yourinstance.salesforce.com/services/data/v58.0/sobjects/Account');
+request.setEndpoint('https://na1.salesforce.com/services/data/v58.0/sobjects/Account');
 request.setMethod('POST');
 request.setHeader('Content-Type', 'application/json');
 request.setHeader('Authorization', 'Bearer ' + token);
@@ -82,9 +83,9 @@ HttpResponse response = new Http().send(request);`} />
             </section>
 
             <section>
-              <h2>Update Record (PATCH)</h2>
+              <h2>6. Update Record (PATCH)</h2>
               <CodeBlock language="apex" code={`HttpRequest request = new HttpRequest();
-request.setEndpoint('https://yourinstance.salesforce.com/services/data/v58.0/sobjects/Account/001xxxxxxxxxxxxxxx');
+request.setEndpoint('https://na1.salesforce.com/services/data/v58.0/sobjects/Account/001xxxxxxxxxxxxxxx');
 request.setMethod('PATCH');
 request.setHeader('Content-Type', 'application/json');
 request.setHeader('Authorization', 'Bearer ' + token);
@@ -94,15 +95,15 @@ request.setBody(body);`} />
             </section>
 
             <section>
-              <h2>Delete Record (DELETE)</h2>
+              <h2>7. Delete Record (DELETE)</h2>
               <CodeBlock language="apex" code={`HttpRequest request = new HttpRequest();
-request.setEndpoint('https://yourinstance.salesforce.com/services/data/v58.0/sobjects/Account/001xxxxxxxxxxxxxxx');
+request.setEndpoint('https://na1.salesforce.com/services/data/v58.0/sobjects/Account/001xxxxxxxxxxxxxxx');
 request.setMethod('DELETE');
 request.setHeader('Authorization', 'Bearer ' + token);`} />
             </section>
 
             <section>
-              <h2>Composite API</h2>
+              <h2>8. Composite API</h2>
               <p>Execute multiple requests in one call:</p>
               <CodeBlock language="apex" code={`// POST to /composite endpoint
 {

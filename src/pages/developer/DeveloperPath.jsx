@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import ProgressBar from '../../components/content/ProgressBar'
+import useProgress from '../../hooks/useProgress'
 
 const developerModules = [
   {
@@ -53,20 +54,13 @@ const developerModules = [
       { id: 'dev-5-2', title: 'OAuth 2.0', slug: '/developer-path/oauth.html' },
       { id: 'dev-5-3', title: 'Webhooks', slug: '/developer-path/webhooks.html' },
     ]
-  },
-  {
-    id: 6,
-    title: '6. Testing',
-    description: 'Unit tests and test best practices',
-    lessons: [
-      { id: 'dev-6-1', title: 'Unit Tests', slug: '/developer-path/unit-tests.html' },
-      { id: 'dev-6-2', title: 'Test Data Factory', slug: '/developer-path/test-data-factory.html' },
-    ]
   }
 ]
 
 export default function DeveloperPath() {
   const totalLessons = developerModules.reduce((sum, m) => sum + m.lessons.length, 0)
+  const { getPathProgress, isLessonCompleted, toggleLesson } = useProgress()
+  const pathProgress = getPathProgress('developer', totalLessons)
 
   return (
     <section className="section">
@@ -79,7 +73,7 @@ export default function DeveloperPath() {
           </p>
         </div>
 
-        <ProgressBar completed={0} total={totalLessons} />
+        <ProgressBar completed={pathProgress.completed} total={pathProgress.total} />
 
         <div className="path-modules">
           {developerModules.map((module) => (
@@ -89,14 +83,38 @@ export default function DeveloperPath() {
                 <p className="path-module-desc">{module.description}</p>
               </div>
               <ul className="path-module-lessons">
-                {module.lessons.map((lesson) => (
-                  <li key={lesson.id}>
-                    <Link to={lesson.slug} className="path-lesson-link">
-                      <span className="lesson-icon">💻</span>
-                      {lesson.title}
-                    </Link>
-                  </li>
-                ))}
+                {module.lessons.map((lesson) => {
+                  const isCompleted = isLessonCompleted(lesson.slug)
+                  return (
+                    <li key={lesson.id}>
+                      <Link to={lesson.slug} className="path-lesson-link">
+                        <span className="lesson-icon">{isCompleted ? '✅' : '💻'}</span>
+                        <span style={{ flex: 1 }}>{lesson.title}</span>
+                        <input
+                          type="checkbox"
+                          checked={isCompleted}
+                          onChange={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            toggleLesson(lesson.slug, 'developer')
+                          }}
+                          onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                          }}
+                          style={{
+                            marginLeft: '8px',
+                            cursor: 'pointer',
+                            width: '18px',
+                            height: '18px',
+                            accentColor: 'var(--color-brand)'
+                          }}
+                          aria-label={`Mark ${lesson.title} as ${isCompleted ? 'incomplete' : 'complete'}`}
+                        />
+                      </Link>
+                    </li>
+                  )
+                })}
               </ul>
             </div>
           ))}

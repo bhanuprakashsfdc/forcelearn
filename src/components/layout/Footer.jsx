@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom'
 
 const footerLinks = [
   { to: '/', label: 'Home' },
-  { to: '/admin-path', label: 'Admin Path' },
-  { to: '/developer-path', label: 'Developer Path' },
-  { to: '/architect-path', label: 'Architect Path' },
-  { to: '/clouds', label: 'Clouds' },
-  { to: '/blogs', label: 'Blogs' },
-  { to: '/projects', label: 'Projects' },
-  { to: '/roadmap', label: 'Roadmap' },
+  { to: '/admin-path.html', label: 'Admin Path' },
+  { to: '/developer-path.html', label: 'Developer Path' },
+  { to: '/architect-path.html', label: 'Architect Path' },
+  { to: '/clouds.html', label: 'Clouds' },
+  { to: '/blogs.html', label: 'Blogs' },
+  { to: '/projects.html', label: 'Projects' },
+  { to: '/roadmap.html', label: 'Roadmap' },
 ]
 
 export default function Footer() {

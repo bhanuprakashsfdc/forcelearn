@@ -6,7 +6,10 @@ import Home from './pages/Home'
 import AdminPath from './pages/admin/AdminPath'
 import DeveloperPath from './pages/developer/DeveloperPath'
 import ArchitectPath from './pages/architect/ArchitectPath'
-import LessonPage from './pages/admin/LessonPage'
+import Clouds from './pages/Clouds'
+import Blogs from './pages/Blogs'
+import Projects from './pages/Projects'
+import Roadmap from './pages/Roadmap'
 import CRMConcepts from './pages/admin/CRMConcepts'
 import NavigationSetup from './pages/admin/NavigationSetup'
 import StandardObjects from './pages/admin/StandardObjects'
@@ -54,17 +57,21 @@ import EventDriven from './pages/architect/EventDriven'
 import IdentityManagement from './pages/architect/IdentityManagement'
 import SSOImplementation from './pages/architect/SSOImplementation'
 import DataProtection from './pages/architect/DataProtection'
+import GettingStartedSalesforce from './pages/blog/GettingStartedSalesforce'
+import ApexBestPractices from './pages/blog/ApexBestPractices'
+import SalesforceSecurityGuide from './pages/blog/SalesforceSecurityGuide'
+import LWCTutorial from './pages/blog/LWCTutorial'
+import CertificationGuide from './pages/blog/CertificationGuide'
 
 export default function App() {
   return (
     <BrowserRouter>
       <div className="app">
         <Header />
-        <main>
+        <main id="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/admin-path.html" element={<AdminPath />} />
-            <Route path="/admin-path/salesforce-basics.html" element={<LessonPage />} />
             <Route path="/admin-path/crm-concepts.html" element={<CRMConcepts />} />
             <Route path="/admin-path/navigation-setup.html" element={<NavigationSetup />} />
             <Route path="/admin-path/standard-objects.html" element={<StandardObjects />} />
@@ -114,146 +121,19 @@ export default function App() {
             <Route path="/architect-path/identity-management.html" element={<IdentityManagement />} />
             <Route path="/architect-path/sso-implementation.html" element={<SSOImplementation />} />
             <Route path="/architect-path/data-protection.html" element={<DataProtection />} />
-            <Route path="/clouds.html" element={<CloudsPage />} />
-            <Route path="/blogs.html" element={<BlogsPage />} />
-            <Route path="/projects.html" element={<ProjectsPage />} />
-            <Route path="/roadmap.html" element={<RoadmapPage />} />
+            <Route path="/blogs/getting-started-salesforce.html" element={<GettingStartedSalesforce />} />
+            <Route path="/blogs/apex-best-practices.html" element={<ApexBestPractices />} />
+            <Route path="/blogs/salesforce-security-guide.html" element={<SalesforceSecurityGuide />} />
+            <Route path="/blogs/lwc-tutorial.html" element={<LWCTutorial />} />
+            <Route path="/blogs/certification-guide.html" element={<CertificationGuide />} />
+            <Route path="/clouds.html" element={<Clouds />} />
+            <Route path="/blogs.html" element={<Blogs />} />
+            <Route path="/projects.html" element={<Projects />} />
+            <Route path="/roadmap.html" element={<Roadmap />} />
           </Routes>
         </main>
         <Footer />
       </div>
     </BrowserRouter>
-  )
-}
-
-function CloudsPage() {
-  const clouds = [
-    { name: 'Sales Cloud', desc: 'Manage sales processes, leads, opportunities, and customer relationships.', icon: '💼', modules: ['Lead Management', 'Opportunity Management', 'Account Management'] },
-    { name: 'Service Cloud', desc: 'Deliver exceptional customer service across any channel.', icon: '🎧', modules: ['Case Management', 'Service Console', 'Knowledge Base'] },
-    { name: 'Marketing Cloud', desc: 'Create personalized customer journeys across all marketing channels.', icon: '📢', modules: ['Email Marketing', 'Social Marketing', 'Journey Builder'] },
-    { name: 'Commerce Cloud', desc: 'Build seamless e-commerce experiences for B2B and B2C.', icon: '🛒', modules: ['Storefront', 'Order Management', 'Inventory'] },
-    { name: 'Experience Cloud', desc: 'Create branded digital experiences for customers, partners, and employees.', icon: '🌐', modules: ['Community Builder', 'Lightning Bolts', 'Content Management'] },
-    { name: 'Data Cloud', desc: 'Unify customer data from all sources for actionable insights.', icon: '📊', modules: ['Data Ingestion', 'Identity Resolution', 'Segmentation'] },
-  ]
-  return (
-    <section className="section">
-      <div className="container">
-        <div className="section-header">
-          <h1 className="section-title">Salesforce Clouds</h1>
-          <p className="section-subtitle">Explore the different Salesforce clouds and their capabilities.</p>
-        </div>
-        <div className="cards-grid">
-          {clouds.map((cloud, i) => (
-            <div className="path-card" key={i}>
-              <div className="path-card-header">
-                <span className="path-card-icon">{cloud.icon}</span>
-                <h3 className="path-card-title">{cloud.name}</h3>
-              </div>
-              <p className="card-desc">{cloud.desc}</p>
-              <div className="path-card-modules">
-                {cloud.modules.map((m, j) => <span key={j} className="badge">{m}</span>)}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function BlogsPage() {
-  const blogs = [
-    { title: 'Getting Started with Salesforce', date: '2024-01-15', category: 'Beginner', excerpt: 'Everything you need to know to start your Salesforce journey.', readTime: '5 min read' },
-    { title: 'Apex Best Practices', date: '2024-02-01', category: 'Developer', excerpt: 'Write clean, efficient Apex code with these best practices.', readTime: '8 min read' },
-    { title: 'Salesforce Security Guide', date: '2024-02-15', category: 'Admin', excerpt: 'Keep your Salesforce org secure with these essential tips.', readTime: '6 min read' },
-    { title: 'Lightning Web Components Tutorial', date: '2024-03-01', category: 'Developer', excerpt: 'Build modern UI with LWC from scratch.', readTime: '10 min read' },
-  ]
-  return (
-    <section className="section">
-      <div className="container">
-        <div className="section-header">
-          <h1 className="section-title">Salesforce Blogs</h1>
-          <p className="section-subtitle">Latest insights, tutorials, and tips for Salesforce professionals.</p>
-        </div>
-        <div className="cards-grid">
-          {blogs.map((blog, i) => (
-            <div className="path-card" key={i}>
-              <div className="path-card-header">
-                <span className="blog-category">{blog.category}</span>
-              </div>
-              <h3 className="path-card-title">{blog.title}</h3>
-              <p className="card-desc">{blog.excerpt}</p>
-              <div className="blog-meta">
-                <span className="blog-date">{blog.date}</span>
-                <span className="blog-read-time">{blog.readTime}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function ProjectsPage() {
-  const projects = [
-    { title: 'Lead Management App', desc: 'Build a complete lead management system with LWC', level: 'Beginner', icon: '📋' },
-    { title: 'Case Management System', desc: 'Create a custom case management solution', level: 'Intermediate', icon: '🎫' },
-    { title: 'Order Processing App', desc: 'Build order processing with Apex and LWC', level: 'Advanced', icon: '📦' },
-  ]
-  return (
-    <section className="section">
-      <div className="container">
-        <div className="section-header">
-          <h1 className="section-title">Salesforce Projects</h1>
-          <p className="section-subtitle">Build real-world Salesforce applications to practice your skills.</p>
-        </div>
-        <div className="cards-grid">
-          {projects.map((project, i) => (
-            <div className="path-card" key={i}>
-              <div className="path-card-header">
-                <span className="path-card-icon">{project.icon}</span>
-                <h3 className="path-card-title">{project.title}</h3>
-              </div>
-              <p className="card-desc">{project.desc}</p>
-              <span className="badge">{project.level}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function RoadmapPage() {
-  const steps = [
-    { phase: 'Phase 1', title: 'Salesforce Basics', duration: '2 weeks', topics: ['CRM Concepts', 'Platform Navigation', 'Setup Menu'] },
-    { phase: 'Phase 2', title: 'Admin Fundamentals', duration: '4 weeks', topics: ['Objects & Fields', 'Data Management', 'Security'] },
-    { phase: 'Phase 3', title: 'Automation', duration: '3 weeks', topics: ['Flow Builder', 'Process Builder', 'Apex'] },
-    { phase: 'Phase 4', title: 'Developer Path', duration: '8 weeks', topics: ['Apex', 'LWC', 'Integration'] },
-    { phase: 'Phase 5', title: 'Architect Path', duration: '12 weeks', topics: ['System Design', 'Data Architecture', 'Security'] },
-  ]
-  return (
-    <section className="section">
-      <div className="container">
-        <div className="section-header">
-          <h1 className="section-title">Your Salesforce Roadmap</h1>
-          <p className="section-subtitle">Follow this structured path to become a Salesforce professional.</p>
-        </div>
-        <div className="roadmap-steps" style={{ flexDirection: 'column', alignItems: 'stretch' }}>
-          {steps.map((step, i) => (
-            <div key={i} className="roadmap-step" style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '20px', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', marginBottom: '16px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: '12px' }}>
-                <span style={{ fontWeight: 600 }}>{step.phase}: {step.title}</span>
-                <span style={{ color: 'var(--color-text-muted)' }}>{step.duration}</span>
-              </div>
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                {step.topics.map((t, j) => <span key={j} className="badge">{t}</span>)}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
   )
 }
