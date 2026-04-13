@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Sidebar from '../../components/layout/Sidebar'
 import Breadcrumb from '../../components/content/Breadcrumb'
+import CodeBlock from '../../components/content/CodeBlock'
 
 const sidebarModules = [
   { id: 4, title: '4. Lightning Web Components', lessons: [
@@ -66,37 +67,31 @@ export default function OAuth() {
                 <li>Exchange code for access token</li>
                 <li>Use access token for API calls</li>
               </ol>
-              <p>Authorization URL:</p>
-              <pre style={{ background: '#2D2D2D', color: '#d4d4d4', padding: '16px', borderRadius: '8px' }}>
-{`https://login.salesforce.com/services/oauth2/authorize
+              <h3>Authorization URL:</h3>
+              <CodeBlock language="text" code={`https://login.salesforce.com/services/oauth2/authorize
   ?response_type=code
   &client_id=YOUR_CONSUMER_KEY
-  &redirect_uri=YOUR_CALLBACK_URL`}
-              </pre>
+  &redirect_uri=YOUR_CALLBACK_URL`} />
             </section>
 
             <section>
               <h2>Token Exchange</h2>
               <p>Exchange authorization code for tokens:</p>
-              <pre style={{ background: '#2D2D2D', color: '#d4d4d4', padding: '16px', borderRadius: '8px' }}>
-{`POST https://login.salesforce.com/services/oauth2/token
+              <CodeBlock language="text" code={`POST https://login.salesforce.com/services/oauth2/token
 
 grant_type=authorization_code
 &code=AUTHORIZATION_CODE
 &client_id=CONSUMER_KEY
 &client_secret=CONSUMER_SECRET
-&redirect_uri=CALLBACK_URL`}
-              </pre>
+&redirect_uri=CALLBACK_URL`} />
               <p>Response:</p>
-              <pre style={{ background: '#2D2D2D', color: '#d4d4d4', padding: '16px', borderRadius: '8px' }}>
-{`{
+              <CodeBlock language="json" code={`{
   "access_token": "...",
   "refresh_token": "...",
   "instance_url": "https://yourinstance.salesforce.com",
   "issued_at": "...",
   "token_type": "Bearer"
-}`}
-              </pre>
+}`} />
             </section>
 
             <section>

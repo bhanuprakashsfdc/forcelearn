@@ -9,7 +9,7 @@ const learningPaths = [
     icon: '👤',
     meta: 'Beginner • 6-8 weeks',
     badges: ['Salesforce Basics', 'Objects & Fields', 'Automation', 'Security'],
-    to: '/admin-path'
+    to: '/admin-path.html'
   },
   {
     title: 'Developer Path',
@@ -17,7 +17,7 @@ const learningPaths = [
     icon: '💻',
     meta: 'Intermediate • 8-12 weeks',
     badges: ['Apex Basics', 'Triggers', 'LWC', 'Integration'],
-    to: '/developer-path'
+    to: '/developer-path.html'
   },
   {
     title: 'Architect Path',
@@ -25,7 +25,7 @@ const learningPaths = [
     icon: '🏛️',
     meta: 'Advanced • 10-16 weeks',
     badges: ['System Design', 'Integration Patterns', 'Data Architecture', 'Governance'],
-    to: '/architect-path'
+    to: '/architect-path.html'
   }
 ]
 
@@ -41,10 +41,10 @@ export default function Home() {
     <>
       <Hero 
         title="Learn Salesforce Step-by-Step\nBeginner to Architect"
-        subtitle="Master Salesforce through structured learning paths. From admin basics to architect certification — all free, all static."
+        subtitle="100% Free. No Signup Required. Master Salesforce through structured learning paths — from admin basics to architect certification."
         ctaLinks={[
-          { to: '/admin-path', label: 'Start Admin Path', primary: true },
-          { to: '/clouds', label: 'Explore Clouds', primary: false },
+          { to: '/admin-path.html', label: 'Start Admin Path', primary: true },
+          { to: '/clouds.html', label: 'Explore Clouds', primary: false },
         ]}
       />
 
@@ -91,9 +91,9 @@ export default function Home() {
             <h2 className="section-title">Why ForceLearn?</h2>
           </div>
           <div className="cards-grid">
-            <div className="path-card">
-              <h3 className="path-card-title">100% Free</h3>
-              <p className="card-desc">No hidden costs. No subscriptions. Learn Salesforce at your own pace without any payments.</p>
+            <div className="path-card" style={{ borderColor: 'var(--color-success)' }}>
+              <h3 className="path-card-title" style={{ color: 'var(--color-success)' }}>100% Free Forever</h3>
+              <p className="card-desc">No hidden costs. No subscriptions. No credit card required. Learn Salesforce at your own pace without any payments.</p>
             </div>
             <div className="path-card">
               <h3 className="path-card-title">Structured Learning</h3>

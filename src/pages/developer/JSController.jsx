@@ -29,12 +29,19 @@ export default function JSController() {
             { label: 'JavaScript Controller' }
           ]} />
           <article className="lesson-content">
-            <h1>JavaScript Controller in LWC</h1>
-            <p className="lesson-intro">Learn how to write JavaScript logic for Lightning Web Components.</p>
+            <h1>JavaScript Controller in LWC: Complete Developer Guide</h1>
+            <p className="lesson-intro">
+              The JavaScript controller is the heart of every Lightning Web Component. This comprehensive
+              guide covers component architecture, reactive properties, lifecycle hooks, decorators, and
+              communication patterns needed to build enterprise-grade LWC applications.
+            </p>
 
             <section>
-              <h2>Component Class Structure</h2>
-              <p>Every LWC JavaScript file extends <code>LightningElement</code>:</p>
+              <h2>1. Component Architecture</h2>
+              <p>Every LWC JavaScript file defines a component class that extends LightningElement. This
+              provides the foundation for reactive rendering and component lifecycle management.</p>
+
+              <h3>1.1 LightningElement Base Class</h3>
               <CodeBlock language="javascript" code={`import { LightningElement } from 'lwc';
 
 export default class MyComponent extends LightningElement {
@@ -47,48 +54,146 @@ export default class MyComponent extends LightningElement {
         this.count++;
     }
 }`} />
+
+              <div className="info-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Feature</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Reactive Rendering</strong></td>
+                      <td>UI automatically updates when properties change</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Shadow DOM</strong></td>
+                      <td>Styles are encapsulated within the component</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Event System</strong></td>
+                      <td>Built-in support for custom events</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Template Access</strong></td>
+                      <td>Query and manipulate template elements</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </section>
 
             <section>
-              <h2>Properties and Fields</h2>
-              <p>Define reactive properties using class properties:</p>
+              <h2>2. Properties and Fields</h2>
+              <p>Properties are the reactive data stores in your component. When properties change, the template
+              automatically re-renders to reflect the new values.</p>
+
+              <h3>2.1 Property Declaration</h3>
               <CodeBlock language="javascript" code={`import { LightningElement } from 'lwc';
 
-export default class MyComponent extends LightningElement {
-    // Simple property
+export default class PropertyDemo extends LightningElement {
+    // Primitive types - automatically reactive
     message = 'Welcome';
+    count = 0;
+    isActive = true;
+    price = 99.99;
     
-    // Array
+    // Arrays - automatically reactive
     items = ['Item 1', 'Item 2', 'Item 3'];
     
-    // Object
+    // Objects - needs @track for deep reactivity
     account = {
         name: 'Acme Corp',
-        industry: 'Technology'
+        industry: 'Technology',
+        rating: 'Hot'
     };
 }`} />
+
+              <h3>2.2 Property Initialization Patterns</h3>
+              <div className="info-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Pattern</th>
+                      <th>Example</th>
+                      <th>Reactivity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Inline Initialize</strong></td>
+                      <td>count = 0</td>
+                      <td>Automatic</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Constructor Init</strong></td>
+                      <td>constructor() { this.items = [] }</td>
+                      <td>Automatic</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Lazy Init (getter)</strong></td>
+                      <td>get data() &#123; return this._data &#125;</td>
+                      <td>On access</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </section>
 
             <section>
-              <h2>Methods and Event Handlers</h2>
-              <p>Create methods to handle user interactions:</p>
+              <h2>3. Methods and Event Handlers</h2>
+              <p>Methods are the functions that define component behavior. They're called from the template
+              via event handlers or can be invoked by parent components.</p>
+
+              <h3>3.1 Basic Method Definition</h3>
               <CodeBlock language="javascript" code={`import { LightningElement } from 'lwc';
 
-export default class MyComponent extends LightningElement {
+export default class MethodDemo extends LightningElement {
     handleButtonClick(event) {
         console.log('Button clicked!');
-        console.log('Event:', event.target.label);
+        console.log('Event target:', event.target.label);
     }
     
     handleInputChange(event) {
         const value = event.target.value;
         console.log('Input value:', value);
     }
+    
+    handleSubmit(event) {
+        event.preventDefault();
+        console.log('Form submitted');
+    }
+}`} />
+
+              <h3>3.2 Method Parameters</h3>
+              <CodeBlock language="javascript" code={`import { LightningElement } from 'lwc';
+
+export default class ParameterDemo extends LightningElement {
+    // Method with parameters
+    calculateTotal(price, quantity) {
+        return price * quantity;
+    }
+    
+    // Using parameters in template
+    handleAddToCart(product) {
+        const total = this.calculateTotal(product.price, product.quantity);
+        console.log('Total:', total);
+    }
+    
+    // Method returning values
+    formatCurrency(amount) {
+        return new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+        }).format(amount);
+    }
 }`} />
             </section>
 
             <section>
-              <h2>Getters</h2>
+              <h2>4. Getters</h2>
               <p>Use getters to compute values:</p>
               <CodeBlock language="javascript" code={`import { LightningElement } from 'lwc';
 

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import ProgressBar from '../../components/content/ProgressBar'
+import useProgress from '../../hooks/useProgress'
 
 const architectModules = [
   {
@@ -46,6 +47,8 @@ const architectModules = [
 
 export default function ArchitectPath() {
   const totalLessons = architectModules.reduce((sum, m) => sum + m.lessons.length, 0)
+  const { getPathProgress, isLessonCompleted, toggleLesson } = useProgress()
+  const pathProgress = getPathProgress('architect', totalLessons)
 
   return (
     <section className="section">
@@ -58,7 +61,7 @@ export default function ArchitectPath() {
           </p>
         </div>
 
-        <ProgressBar completed={0} total={totalLessons} />
+        <ProgressBar completed={pathProgress.completed} total={pathProgress.total} />
 
         <div className="path-modules">
           {architectModules.map((module) => (
@@ -68,14 +71,38 @@ export default function ArchitectPath() {
                 <p className="path-module-desc">{module.description}</p>
               </div>
               <ul className="path-module-lessons">
-                {module.lessons.map((lesson) => (
-                  <li key={lesson.id}>
-                    <Link to={lesson.slug} className="path-lesson-link">
-                      <span className="lesson-icon">🏛️</span>
-                      {lesson.title}
-                    </Link>
-                  </li>
-                ))}
+                {module.lessons.map((lesson) => {
+                  const isCompleted = isLessonCompleted(lesson.slug)
+                  return (
+                    <li key={lesson.id}>
+                      <Link to={lesson.slug} className="path-lesson-link">
+                        <span className="lesson-icon">{isCompleted ? '✅' : '🏛️'}</span>
+                        <span style={{ flex: 1 }}>{lesson.title}</span>
+                        <input
+                          type="checkbox"
+                          checked={isCompleted}
+                          onChange={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            toggleLesson(lesson.slug, 'architect')
+                          }}
+                          onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                          }}
+                          style={{
+                            marginLeft: '8px',
+                            cursor: 'pointer',
+                            width: '18px',
+                            height: '18px',
+                            accentColor: 'var(--color-brand)'
+                          }}
+                          aria-label={`Mark ${lesson.title} as ${isCompleted ? 'incomplete' : 'complete'}`}
+                        />
+                      </Link>
+                    </li>
+                  )
+                })}
               </ul>
             </div>
           ))}

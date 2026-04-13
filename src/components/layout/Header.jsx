@@ -18,6 +18,24 @@ export default function Header() {
 
   return (
     <header className="header">
+      {/* Skip to main content link for accessibility */}
+      <a href="#main-content" className="skip-link" style={{
+        position: 'absolute',
+        left: '-9999px',
+        zIndex: 999,
+        padding: '8px 16px',
+        background: 'var(--color-brand)',
+        color: 'white',
+        textDecoration: 'none',
+        borderRadius: 'var(--radius-sm)',
+        top: '8px'
+      }}
+      onFocus={(e) => e.target.style.left = '8px'}
+      onBlur={(e) => e.target.style.left = '-9999px'}
+      >
+        Skip to main content
+      </a>
+      
       <div className="container">
         <div className="header-inner">
           <Link to="/" className="logo">
