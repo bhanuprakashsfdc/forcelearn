@@ -1,0 +1,116 @@
+{
+  "layout_components": {
+    "Header": {
+      "path": "src/components/Header.jsx",
+      "props": {
+        "navLinks": "array of link objects",
+        "logo": "string"
+      },
+      "children": []
+    },
+    "Footer": {
+      "path": "src/components/Footer.jsx",
+      "props": {},
+      "children": []
+    },
+    "Sidebar": {
+      "path": "src/components/Sidebar.jsx",
+      "props": {
+        "modules": "array of module objects",
+        "currentSlug": "string"
+      },
+      "children": []
+    },
+    "Breadcrumb": {
+      "path": "src/components/Breadcrumb.jsx",
+      "props": {
+        "items": "array of crumb objects"
+      },
+      "children": []
+    }
+  },
+  "content_components": {
+    "Hero": {
+      "path": "src/components/Hero.jsx",
+      "props": {
+        "title": "string",
+        "subtitle": "string",
+        "ctaLinks": "array of CTA objects"
+      },
+      "children": []
+    },
+    "LearningPathCard": {
+      "path": "src/components/LearningPathCard.jsx",
+      "props": {
+        "path": "path object with title, description, modules"
+      },
+      "children": []
+    },
+    "ModuleList": {
+      "path": "src/components/ModuleList.jsx",
+      "props": {
+        "modules": "array of module objects"
+      },
+      "children": []
+    },
+    "LessonContent": {
+      "path": "src/components/LessonContent.jsx",
+      "props": {
+        "title": "string",
+        "content": "MDX content",
+        "codeExamples": "array of code snippets"
+      },
+      "children": []
+    },
+    "CodeBlock": {
+      "path": "src/components/CodeBlock.jsx",
+      "props": {
+        "language": "string",
+        "code": "string"
+      },
+      "children": []
+    },
+    "ProgressBar": {
+      "path": "src/components/ProgressBar.jsx",
+      "props": {
+        "completed": "number",
+        "total": "number"
+      },
+      "children": []
+    }
+  },
+  "navigation_components": {
+    "NavLinks": {
+      "path": "src/components/NavLinks.jsx",
+      "props": {
+        "links": "array of link objects"
+      },
+      "children": []
+    },
+    "MobileMenu": {
+      "path": "src/components/MobileMenu.jsx",
+      "props": {
+        "isOpen": "boolean",
+        "links": "array of link objects"
+      },
+      "children": []
+    }
+  },
+  "page_templates": {
+    "HomePage": {
+      "path": "src/pages/Home.jsx",
+      "layout": "MainLayout",
+      "components": ["Hero", "LearningPathCard", "Roadmap"]
+    },
+    "PathPage": {
+      "path": "src/pages/Path.jsx",
+      "layout": "MainLayout",
+      "components": ["Sidebar", "ModuleList", "ProgressBar"]
+    },
+    "LessonPage": {
+      "path": "src/pages/Lesson.jsx",
+      "layout": "MainLayout",
+      "components": ["Sidebar", "Breadcrumb", "LessonContent", "CodeBlock"]
+    }
+  }
+}
