@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -15,6 +15,10 @@ const navLinks = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
+
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [location])
 
   return (
     <header className="header">
@@ -39,7 +43,7 @@ export default function Header() {
       <div className="container">
         <div className="header-inner">
           <Link to="/" className="logo">
-            Force<span>Learn</span>
+            <img src="/logo.jpeg" alt="ForceLearn" />
           </Link>
           
           <nav className={`nav ${mobileOpen ? 'nav-open' : ''}`}>
