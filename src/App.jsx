@@ -62,6 +62,53 @@ import ApexBestPractices from './pages/blog/ApexBestPractices'
 import SalesforceSecurityGuide from './pages/blog/SalesforceSecurityGuide'
 import LWCTutorial from './pages/blog/LWCTutorial'
 import CertificationGuide from './pages/blog/CertificationGuide'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
+import Contact from './pages/Contact'
+import About from './pages/About'
+import OWD from './pages/blog/OWD'
+import SharingRules from './pages/blog/SharingRules'
+import LookupRelationship from './pages/blog/LookupRelationship'
+import MasterDetailRelationship from './pages/blog/MasterDetailRelationship'
+import SelfRelationship from './pages/blog/SelfRelationship'
+import JunctionRelationship from './pages/blog/JunctionRelationship'
+import DependentPicklist from './pages/blog/DependentPicklist'
+import Reports from './pages/blog/Reports'
+import DashboardsBlog from './pages/blog/Dashboards'
+import DynamicDashboard from './pages/blog/DynamicDashboard'
+import BucketingReports from './pages/blog/BucketingReports'
+import Workflow from './pages/blog/Workflow'
+import ProcessBuilderBlog from './pages/blog/ProcessBuilder'
+import EmailAlerts from './pages/blog/EmailAlerts'
+import RecordTypes from './pages/blog/RecordTypes'
+import ValidationRulesBlog from './pages/blog/ValidationRules'
+import FieldLevelSecurityBlog from './pages/blog/FieldLevelSecurity'
+import CompactLayout from './pages/blog/CompactLayout'
+import SearchLayouts from './pages/blog/SearchLayouts'
+import Tabs from './pages/blog/Tabs'
+import DynamicForms from './pages/blog/DynamicForms'
+import CustomLinks from './pages/blog/CustomLinks'
+import TaskBlog from './pages/blog/Task'
+import EventBlog from './pages/blog/Event'
+import EmailTemplates from './pages/blog/EmailTemplates'
+import MailMergeTemplates from './pages/blog/MailMergeTemplates'
+import StorageUsage from './pages/blog/StorageUsage'
+import ScopingRules from './pages/blog/ScopingRules'
+import LookupFilters from './pages/blog/LookupFilters'
+import CustomButtons from './pages/blog/CustomButtons'
+import FieldTrackingHistory from './pages/blog/FieldTrackingHistory'
+import LoginHistory from './pages/blog/LoginHistory'
+import WhoID from './pages/blog/WhoID'
+import WhatID from './pages/blog/WhatID'
+import FreezeDeactivate from './pages/blog/FreezeDeactivate'
+import SFDXCommands from './pages/blog/SFDXCommands'
+import SecurityToken from './pages/blog/SecurityToken'
+import IntegrationInterview from './pages/blog/IntegrationInterview'
+import LightningBundle from './pages/blog/LightningBundle'
+import SFDXInstall from './pages/blog/SFDXInstall'
+import LightningInterview from './pages/blog/LightningInterview'
+import ForceComLogins from './pages/blog/ForceComLogins'
+import SalesforceSimplified from './pages/blog/SalesforceSimplified'
 
 export default function App() {
   return (
@@ -126,10 +173,58 @@ export default function App() {
             <Route path="/blogs/salesforce-security-guide.html" element={<SalesforceSecurityGuide />} />
             <Route path="/blogs/lwc-tutorial.html" element={<LWCTutorial />} />
             <Route path="/blogs/certification-guide.html" element={<CertificationGuide />} />
+            <Route path="/what-is-owd-in-salesforce.html" element={<OWD />} />
+            <Route path="/what-is-sharing-rules-in-salesforce.html" element={<SharingRules />} />
+            <Route path="/lookup-relationship-in-salesforce.html" element={<LookupRelationship />} />
+            <Route path="/master-detail-relationship-in-salesforce.html" element={<MasterDetailRelationship />} />
+            <Route path="/self-relationship-in-salesforce.html" element={<SelfRelationship />} />
+            <Route path="/junction-relationship-in-salesforce.html" element={<JunctionRelationship />} />
+            <Route path="/dependent-picklist-in-salesforce.html" element={<DependentPicklist />} />
+            <Route path="/what-is-reports-in-salesforce.html" element={<Reports />} />
+            <Route path="/what-is-dashboards-in-salesforce.html" element={<DashboardsBlog />} />
+            <Route path="/what-is-dynamic-dashboard-in-salesforce.html" element={<DynamicDashboard />} />
+            <Route path="/what-is-bucketing-reports-in-salesforce.html" element={<BucketingReports />} />
+            <Route path="/what-is-workflows-salesforce.html" element={<Workflow />} />
+            <Route path="/what-is-process-builder-salesforce.html" element={<ProcessBuilderBlog />} />
+            <Route path="/what-is-email-alerts-in-salesforce.html" element={<EmailAlerts />} />
+            <Route path="/what-is-record-types-salesforce.html" element={<RecordTypes />} />
+            <Route path="/what-is-validation-rules-salesforce.html" element={<ValidationRulesBlog />} />
+            <Route path="/what-is-field-level-security-salesforce.html" element={<FieldLevelSecurityBlog />} />
+            <Route path="/what-is-compact-layout-salesforce.html" element={<CompactLayout />} />
+            <Route path="/what-is-search-layouts-salesforce.html" element={<SearchLayouts />} />
+            <Route path="/how-to-create-tabs-salesforce.html" element={<Tabs />} />
+            <Route path="/what-is-dynamic-forms-in-salesforce.html" element={<DynamicForms />} />
+            <Route path="/what-is-custom-links-salesforce.html" element={<CustomLinks />} />
+            <Route path="/what-is-task-in-salesforce.html" element={<TaskBlog />} />
+            <Route path="/what-is-event-salesforce.html" element={<EventBlog />} />
+            <Route path="/what-is-bucketing-reports-in-salesforce.html" element={<BucketingReports />} />
+            <Route path="/lightning-email-templates-salesforce.html" element={<EmailTemplates />} />
+            <Route path="/mail-merge-templates-salesforce.html" element={<MailMergeTemplates />} />
+            <Route path="/what-is-storage-usage-salesforce.html" element={<StorageUsage />} />
+            <Route path="/what-is-scoping-rules-salesforce.html" element={<ScopingRules />} />
+            <Route path="/what-is-lookup-filters-salesforce.html" element={<LookupFilters />} />
+            <Route path="/what-is-custom-buttons-salesforce.html" element={<CustomButtons />} />
+            <Route path="/what-is-field-tracking-history-salesforce.html" element={<FieldTrackingHistory />} />
+            <Route path="/how-to-track-login-history-salesforce.html" element={<LoginHistory />} />
+            <Route path="/what-is-who-id-salesforce.html" element={<WhoID />} />
+            <Route path="/what-is-what-id-salesforce.html" element={<WhatID />} />
+            <Route path="/difference-between-freeze-deactivate-salesforce.html" element={<FreezeDeactivate />} />
+            <Route path="/salesforce-dx-commands-list.html" element={<SFDXCommands />} />
+            <Route path="/how-to-reset-security-token-salesforce.html" element={<SecurityToken />} />
+            <Route path="/salesforce-integration-interview-questions.html" element={<IntegrationInterview />} />
+            <Route path="/lightning-bundle-in-salesforce-lightning.html" element={<LightningBundle />} />
+            <Route path="/how-to-install-salesforce-dx.html" element={<SFDXInstall />} />
+            <Route path="/salesforce-lightning-interview-questions.html" element={<LightningInterview />} />
+            <Route path="/force-com-logins-chrome-extension.html" element={<ForceComLogins />} />
+            <Route path="/salesforce-simplified-chrome-extension.html" element={<SalesforceSimplified />} />
             <Route path="/clouds.html" element={<Clouds />} />
             <Route path="/blogs.html" element={<Blogs />} />
             <Route path="/projects.html" element={<Projects />} />
             <Route path="/roadmap.html" element={<Roadmap />} />
+            <Route path="/privacy-policy.html" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service.html" element={<TermsOfService />} />
+            <Route path="/contact.html" element={<Contact />} />
+            <Route path="/about.html" element={<About />} />
           </Routes>
         </main>
         <Footer />
